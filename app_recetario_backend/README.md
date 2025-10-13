@@ -1,15 +1,15 @@
 # Recetario Backend
 
-Este es el backend del proyecto **Recetario**, desarrollado con **Java 17** y **Spring Boot 3**.
+Este es el backend del proyecto **Recetario**, desarrollado con **Java** y **Spring Boot**.
 
-## 🚀 Tecnologías principales
+## Tecnologías principales
 - Spring Boot (REST API)
 - JPA + Hibernate
 - PostgreSQL
 - Spring Security (JWT en fases posteriores)
 - Maven
 
-## ▶️ Ejecución local
+## Ejecución local
 ```bash
 mvn spring-boot:run
 ```
