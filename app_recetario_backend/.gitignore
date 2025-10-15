@@ -1,0 +1,21 @@
+# Maven
+target/
+*.jar
+*.war
+*.ear
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.log
+*.tmp
+
+# Credenciales
+*.pem
