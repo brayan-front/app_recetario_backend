@@ -3,6 +3,8 @@ package com.recetario.backend.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "restaurant_users")
 @Getter
@@ -28,5 +30,5 @@ public class RestaurantUser {
 
     // Por ahora dejamos este campo, aunque tu módulo no gestiona restaurantes directamente
     @Column(name = "restaurant_id", nullable = false)
-    private String restaurantId;
+    private UUID restaurantId;
 }

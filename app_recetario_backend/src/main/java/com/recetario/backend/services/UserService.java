@@ -98,7 +98,7 @@ public class UserService {
         RestaurantUser restaurantUser = new RestaurantUser();
         restaurantUser.setUser(user);
         restaurantUser.setRole(role);
-        restaurantUser.setRestaurantId(restaurantId.toString());
+        restaurantUser.setRestaurantId(restaurantId);
 
         restaurantUserRepository.save(restaurantUser);
     }

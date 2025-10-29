@@ -17,7 +17,7 @@ public interface RestaurantUserRepository extends JpaRepository<RestaurantUser, 
     List<RestaurantUser> findByUser_UserId(UUID userId);
 
     /**
-     * Busca la asignación específica entre user.userId (UUID) y restaurantId (String).
+     * Busca la asignación específica entre user.userId (UUID) y restaurantId (UUID).
      */
-    Optional<RestaurantUser> findByUser_UserIdAndRestaurantId(UUID userId, String restaurantId);
+    Optional<RestaurantUser> findByUser_UserIdAndRestaurantId(UUID userId, UUID restaurantId);
 }

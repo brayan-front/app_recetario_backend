@@ -36,8 +36,8 @@ public class CustomUserDetailsService implements UserDetailsService {
                 ? usernameParts[1]
                 : null;
 
-        // Buscar usuario por username
-        User user = userRepository.findByUsername(actualUsername)
+        // Buscar usuario por email (ya que el JWT usa email como subject)
+        User user = userRepository.findByEmail(actualUsername)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + actualUsername));
 
         if (user.getActive() != null && !user.getActive()) {
@@ -48,7 +48,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         if (restaurantId != null) {
             // Buscar la asignación específica por userId y restaurantId
-            Optional<RestaurantUser> ruOpt = restaurantUserRepository.findByUser_UserIdAndRestaurantId(user.getUserId(), restaurantId);
+            Optional<RestaurantUser> ruOpt = restaurantUserRepository.findByUser_UserIdAndRestaurantId(user.getUserId(), UUID.fromString(restaurantId));
             RestaurantUser ru = ruOpt.orElseThrow(() -> new UsernameNotFoundException("Usuario no asignado al restaurante especificado"));
             authorities.add(new SimpleGrantedAuthority("ROLE_" + ru.getRole().getName()));
         } else {
