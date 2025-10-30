@@ -1,12 +1,11 @@
-package com.example.recetario;
+package com.recetario.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class AppRecetarioBackendApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(AppRecetarioBackendApplication.class, args);
     }
 }
-
