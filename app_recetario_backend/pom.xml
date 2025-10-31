@@ -42,14 +42,12 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- PostgreSQL (comentado para desarrollo) -->
-        <!--
+        <!-- PostgreSQL -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
-        -->
 
         <!-- Spring Security Config para @PreAuthorize -->
         <dependency>
