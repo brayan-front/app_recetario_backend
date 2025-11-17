@@ -20,5 +20,4 @@ public class Recipe {
     private List<RecipeIngredient> ingredients = new ArrayList<>();
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Preparation> preparations = new ArrayList<>();
-}
+    private List<Preparation> preparations = new ArrayList<>();}
