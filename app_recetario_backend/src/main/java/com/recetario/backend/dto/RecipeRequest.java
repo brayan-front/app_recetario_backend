@@ -1,4 +1,5 @@
-package com.example.recetario.dto;
+//package com.example.recetario.dto;
+package com.recetario.backend.dto;
 
 import lombok.*;
 import java.util.*;

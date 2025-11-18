@@ -1,4 +1,5 @@
-package com.proyecto.code.menus.model;
+// package com.proyecto.code.menus.model;
+package com.recetario.backend.entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -1,7 +1,11 @@
-package com.example.recetario.controller;
+//package com.example.recetario.controller;
+package com.recetario.backend.controllers;
 
-import com.example.recetario.model.Ingredient;
-import com.example.recetario.service.IngredientService;
+//import com.example.recetario.model.Ingredient;
+//import com.example.recetario.service.IngredientService;
+import com.recetario.backend.entities.Ingredient;
+import com.recetario.backend.services.IngredientService;
+
 import jakarta.validation.Valid;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;

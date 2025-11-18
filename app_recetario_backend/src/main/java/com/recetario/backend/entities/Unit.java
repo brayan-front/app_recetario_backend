@@ -1,4 +1,6 @@
-package com.example.recetario.model;
+// package com.example.recetario.model;
+package com.recetario.backend.entities;
+
 import java.util.UUID;
 
 import jakarta.persistence.*;

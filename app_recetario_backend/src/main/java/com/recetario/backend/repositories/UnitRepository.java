@@ -1,9 +1,10 @@
-package com.example.recetario.repository;
+// package com.example.recetario.repository;
+package com.recetario.backend.repositories;
 
-import com.example.recetario.model.Unit;
+//import com.example.recetario.model.Unit;
+import com.recetario.backend.entities.Unit;
 
 import java.util.UUID;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

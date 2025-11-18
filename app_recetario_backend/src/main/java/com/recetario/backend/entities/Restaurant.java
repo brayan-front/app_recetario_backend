@@ -1,4 +1,5 @@
-package com.recetario.restaurant.model;
+// package com.recetario.restaurant.model;
+package com.recetario.backend.entities;
 
 import jakarta.persistence.*;
 

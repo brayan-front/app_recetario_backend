@@ -1,8 +1,13 @@
-package com.proyecto.code.menus.controller;
+//package com.proyecto.code.menus.controller;
+package com.recetario.backend.controllers;
 
-import com.proyecto.code.menus.model.menu;
-import com.proyecto.code.menus.repository.menuRepository;
-import com.proyecto.code.menus.repository.menuRepository.MenuPlanning;
+//import com.proyecto.code.menus.model.menu;
+//import com.proyecto.code.menus.repository.menuRepository;
+//import com.proyecto.code.menus.repository.menuRepository.MenuPlanning;
+import com.recetario.backend.entities.menu;
+import com.recetario.backend.repositories.menuRepository;
+import com.recetario.backend.repositories.menuRepository.MenuPlanning;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

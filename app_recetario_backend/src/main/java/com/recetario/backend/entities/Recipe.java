@@ -1,4 +1,5 @@
-package com.example.recetario.model;
+// package com.example.recetario.model;
+package com.recetario.backend.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

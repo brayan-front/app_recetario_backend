@@ -1,7 +1,11 @@
-package com.recetario.restaurant.service;
+//package com.recetario.restaurant.service;
+package com.recetario.backend.services;
 
-import com.recetario.restaurant.model.Restaurant;
-import com.recetario.restaurant.repository.RestaurantRepository;
+//import com.recetario.restaurant.model.Restaurant;
+//import com.recetario.restaurant.repository.RestaurantRepository;
+import com.recetario.backend.entities.Restaurant;
+import com.recetario.backend.repositories.RestaurantRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;

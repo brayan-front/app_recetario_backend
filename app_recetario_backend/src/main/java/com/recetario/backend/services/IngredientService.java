@@ -1,9 +1,15 @@
-package com.example.recetario.service;
+//package com.example.recetario.service;
+package com.recetario.backend.services;
 
-import com.example.recetario.model.Ingredient;
-import com.example.recetario.model.Unit;
-import com.example.recetario.repository.IngredientRepository;
-import com.example.recetario.repository.UnitRepository;
+//import com.example.recetario.model.Ingredient;
+//import com.example.recetario.model.Unit;
+//import com.example.recetario.repository.IngredientRepository;
+//import com.example.recetario.repository.UnitRepository;
+import com.recetario.backend.entities.Ingredient;
+import com.recetario.backend.entities.Unit;
+import com.recetario.backend.repositories.IngredientRepository;
+import com.recetario.backend.repositories.UnitRepository;
+
 import org.springframework.stereotype.Service;
 import java.util.UUID;
 import java.util.*;

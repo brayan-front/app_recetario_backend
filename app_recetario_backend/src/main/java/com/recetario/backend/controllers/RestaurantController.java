@@ -1,7 +1,11 @@
-package com.recetario.restaurant.controller;
+//package com.recetario.restaurant.controller;
+package com.recetario.backend.controllers;
 
-import com.recetario.restaurant.model.Restaurant;
-import com.recetario.restaurant.service.RestaurantService;
+//import com.recetario.restaurant.model.Restaurant;
+//import com.recetario.restaurant.service.RestaurantService;
+import com.recetario.backend.entities.Restaurant;
+import com.recetario.backend.services.RestaurantService;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

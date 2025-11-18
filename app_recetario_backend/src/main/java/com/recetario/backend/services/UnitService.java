@@ -1,7 +1,11 @@
-package com.example.recetario.service;
+//package com.example.recetario.service;
+package com.recetario.backend.services;
 
-import com.example.recetario.model.Unit;
-import com.example.recetario.repository.UnitRepository;
+//import com.example.recetario.model.Unit;
+//import com.example.recetario.repository.UnitRepository;
+import com.recetario.backend.entities.Unit;
+import com.recetario.backend.repositories.UnitRepository;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

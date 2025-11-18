@@ -1,7 +1,11 @@
-package com.example.recetario.controller;
+//package com.example.recetario.controller;
+package com.recetario.backend.controllers;
 
-import com.example.recetario.model.Unit;
-import com.example.recetario.service.UnitService;
+//import com.example.recetario.model.Unit;
+//import com.example.recetario.service.UnitService;
+import com.recetario.backend.entities.Unit;
+import com.recetario.backend.services.UnitService;
+
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 

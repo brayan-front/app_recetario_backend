@@ -1,6 +1,9 @@
-package com.proyecto.code.menus.repository;
+//package com.proyecto.code.menus.repository;
+package com.recetario.backend.repositories;
 
-import com.proyecto.code.menus.model.menu;
+//import com.proyecto.code.menus.model.menu;
+import com.recetario.backend.entities.menu;
+
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
