@@ -1,28 +1,13 @@
-//package com.example.recetario.dto;
 package com.recetario.backend.dto;
 
-import lombok.*;
-import java.util.*;
+import lombok.Getter;
+import lombok.Setter;
 
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
 public class RecipeRequest {
-    public String restaurantId;
-    public String title;
-    public String description;
-    public Integer servings;
-    public List<IngredientItem> ingredients;
-    public List<PrepItem> preparations;
-
-    @Getter @Setter @NoArgsConstructor @AllArgsConstructor
-    public static class IngredientItem {
-        public UUID ingredientId;
-        public Double quantity;
-        public UUID unitId;
-    }
-
-    @Getter @Setter @NoArgsConstructor @AllArgsConstructor
-    public static class PrepItem {
-        public Integer stepNumber;
-        public String instructions;
-    }
+    private String title;
+    private String description;
+    private Integer servings;
+    private String authorId;   // viene en string pero se convierte a UUID
 }
