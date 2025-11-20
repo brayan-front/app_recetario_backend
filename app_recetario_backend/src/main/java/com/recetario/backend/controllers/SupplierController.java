@@ -61,10 +61,17 @@ public class SupplierController {
     }
 
 
+    // Creo items por proveedor
     @PostMapping("/{id}/items")
     public ResponseEntity<SupplierItem> addItemToSupplier(@PathVariable UUID id, @RequestBody SupplierItem item ) {
         SupplierItem created = supplierItemService.createItem(id, item);
         return ResponseEntity.ok(created);
+    }
+
+    // listo items por proveedor
+    @GetMapping("/{id}/item-list")
+    public ResponseEntity<?> getSupplierItems(@PathVariable UUID id) {
+        return ResponseEntity.ok(supplierItemService.getItemsBySupplier(id));
     }
 
 }

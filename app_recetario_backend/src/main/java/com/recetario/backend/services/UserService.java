@@ -80,12 +80,29 @@ public class UserService {
     // ACTUALIZAR USUARIO
     // =============================
     @Transactional
-    public User updateUser(UUID userId, String fullName) {
+    public User updateUser(UUID userId, String fullName, String email, String rawPassword) {
+
         User user = getUserById(userId);
-        user.setFullName(fullName);
+
+        if (fullName != null && !fullName.isEmpty()) {
+            user.setFullName(fullName);
+        }
+
+        if (email != null && !email.isEmpty()) {
+            // Validar que no exista otro usuario con ese correo
+            if (userRepository.existsByEmail(email) && !email.equals(user.getEmail())) {
+                throw new RuntimeException("El correo ya está en uso");
+            }
+            user.setEmail(email);
+        }
+
+        if (rawPassword != null && !rawPassword.isEmpty()) {
+            user.setPassword(passwordEncoder.encode(rawPassword));
+        }
+
         return userRepository.save(user);
     }
-
+    
     // =============================
     // ASIGNAR ROL A UN USUARIO
     // =============================
