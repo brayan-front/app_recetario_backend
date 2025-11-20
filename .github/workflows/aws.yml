@@ -1,0 +1,58 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  AWS_REGION: us-east-2           # <--- CAMBIAR por tu región, ej: us-east-1
+  EC2_HOST: 18.188.220.98          # <--- CAMBIAR por la IP pública o DNS
+  EC2_USER: Ubuntu               # <--- CAMBIAR: ec2-user (Amazon Linux) / ubuntu (Ubuntu)
+  EC2_PATH: /home/Ubuntu/app        # <--- CAMBIAR ruta del proyecto en el EC2
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy Backend to EC2
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    # 1. Descargar el repo del backend
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    # 2. Configurar credenciales AWS (por si necesitas usar AWS CLI)
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    # 3. Preparar clave privada para SSH
+    - name: Configure SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.EC2_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        echo "StrictHostKeyChecking no" >> ~/.ssh/config
+
+    # 4. Subir archivos del backend a EC2 con rsync
+    - name: Upload project to EC2
+      run: |
+        rsync -avz --delete \
+        -e "ssh -i ~/.ssh/id_rsa" \
+        ./ \
+        ${{ env.EC2_USER }}@${{ env.EC2_HOST }}:${{ env.EC2_PATH }}
+
+    # 5. Instalar dependencias y reiniciar PM2 dentro del servidor
+    - name: Install dependencies & restart PM2
+      run: |
+        ssh -i ~/.ssh/id_rsa ${{ env.EC2_USER }}@${{ env.EC2_HOST }} << 'EOF'
+          cd ${EC2_PATH}
+          npm install --production
+          pm2 restart all || pm2 start index.js --name backend
+        EOF
