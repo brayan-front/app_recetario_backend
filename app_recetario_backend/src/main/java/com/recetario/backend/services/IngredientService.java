@@ -19,13 +19,20 @@ public class IngredientService {
     private final IngredientRepository repo;
     private final UnitRepository unitRepo;
 
-    public IngredientService(IngredientRepository repo, UnitRepository unitRepo) { this.repo = repo; this.unitRepo = unitRepo; }
+    public IngredientService(IngredientRepository repo, UnitRepository unitRepo) {
+        this.repo = repo;
+        this.unitRepo = unitRepo;
+    }
 
     public Ingredient create(Ingredient i) {
-        if (i.getDefaultUnit() != null) {
-            Unit unit = unitRepo.findById(i.getDefaultUnit().getId()).orElseThrow(() -> new IllegalArgumentException("Unit not found"));
+
+        // Si enviaron defaultUnit, verificamos que existe
+        if (i.getDefaultUnit() != null && i.getDefaultUnit().getId() != null) {
+            Unit unit = unitRepo.findById(i.getDefaultUnit().getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Unit not found"));
             i.setDefaultUnit(unit);
         }
+
         return repo.save(i);
     }
 
@@ -34,14 +41,19 @@ public class IngredientService {
     public Optional<Ingredient> findById(UUID id) { return repo.findById(id); }
 
     public Ingredient update(UUID id, Ingredient changes){
-        Ingredient e = repo.findById(id).orElseThrow(() -> new IllegalArgumentException("Ingredient not found"));
+        Ingredient e = repo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Ingredient not found"));
+
         if (changes.getDescription()!=null) e.setDescription(changes.getDescription());
         if (changes.getName()!=null) e.setName(changes.getName());
         if (changes.getCaloriesPerUnit()!=null) e.setCaloriesPerUnit(changes.getCaloriesPerUnit());
-        if (changes.getDefaultUnit()!=null) {
-            Unit unit = unitRepo.findById(changes.getDefaultUnit().getId()).orElseThrow(() -> new IllegalArgumentException("Unit not found"));
+
+        if (changes.getDefaultUnit()!=null && changes.getDefaultUnit().getId() != null) {
+            Unit unit = unitRepo.findById(changes.getDefaultUnit().getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Unit not found"));
             e.setDefaultUnit(unit);
         }
+
         return repo.save(e);
     }
 

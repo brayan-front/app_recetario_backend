@@ -3,6 +3,8 @@ package com.recetario.backend.controllers;
 import com.recetario.backend.dto.SupplierRequest;
 import com.recetario.backend.entities.Supplier;
 import com.recetario.backend.services.SupplierService;
+import com.recetario.backend.services.SupplierItemService;
+import com.recetario.backend.entities.SupplierItem;
 
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
@@ -16,9 +18,12 @@ import java.util.UUID;
 public class SupplierController {
 
     private final SupplierService supplierService;
+    private final SupplierItemService supplierItemService;
 
-    public SupplierController(SupplierService supplierService) {
-        this.supplierService = supplierService;
+    public SupplierController(SupplierService supplierService,
+                          SupplierItemService supplierItemService) {
+    this.supplierService = supplierService;
+    this.supplierItemService = supplierItemService;
     }
 
     // CREATE
@@ -53,6 +58,13 @@ public class SupplierController {
     public ResponseEntity<Void> deleteSupplier(@PathVariable UUID  id) {
         supplierService.deleteSupplier(id);
         return ResponseEntity.noContent().build();
+    }
+
+
+    @PostMapping("/{id}/items")
+    public ResponseEntity<SupplierItem> addItemToSupplier(@PathVariable UUID id, @RequestBody SupplierItem item ) {
+        SupplierItem created = supplierItemService.createItem(id, item);
+        return ResponseEntity.ok(created);
     }
 
 }
