@@ -10,22 +10,19 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "menus")
-public class Menu {
+@Table(name = "menu_planning")
+public class MenuPlanning {
 
     @Id
-    @Column(name = "menu_id")
-    private UUID menuId;
+    @Column(name = "planning_id")
+    private UUID planningId;
 
     @Column(name = "restaurant_id", nullable = false)
     private UUID restaurantId;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(name = "menu_id", nullable = false)
+    private UUID menuId;
 
-    @Column(name = "start_date")
-    private LocalDate startDate;
-
-    @Column(name = "end_date")
-    private LocalDate endDate;
+    @Column(name = "planned_date", nullable = false)
+    private LocalDate plannedDate;
 }
