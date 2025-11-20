@@ -45,13 +45,13 @@ jobs:
       run: |
         rsync -avz --delete \
         -e "ssh -i ~/.ssh/id_rsa" \
-        ./ \
+        ./app_recetario_backend/ \
         ${{ env.EC2_USER }}@${{ env.EC2_HOST }}:${{ env.EC2_PATH }}
 
     # 5. Instalar dependencias y reiniciar PM2 dentro del servidor
     - name: Install dependencies & restart PM2
       run: |
-        ssh -i ~/.ssh/id_rsa ${{ env.EC2_USER }}@${{ env.EC2_HOST }} << EOF
+        ssh -i ~/.ssh/id_rsa ${{ env.EC2_USER }}@${{ env.EC2_HOST }} << 'EOF'
           cd ${EC2_PATH}
           npm install --production
           pm2 restart all || pm2 start index.js --name backend
