@@ -1,6 +1,7 @@
 package com.recetario.backend.repositories;
 
 import com.recetario.backend.entities.RestaurantUser;
+import com.recetario.backend.dto.RestaurantUserResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface RestaurantUserRepository extends JpaRepository<RestaurantUser, String> {
+public interface RestaurantUserRepository extends JpaRepository<RestaurantUser, UUID> {
 
     /**
      * Busca todas las asignaciones de un usuario (user.userId es UUID).
@@ -20,4 +21,9 @@ public interface RestaurantUserRepository extends JpaRepository<RestaurantUser, 
      * Busca la asignación específica entre user.userId (UUID) y restaurantId (UUID).
      */
     Optional<RestaurantUser> findByUser_UserIdAndRestaurantId(UUID userId, UUID restaurantId);
+
+    /**
+     * Busca la asignación específicas de un restaurante
+     */
+    List<RestaurantUser> findByRestaurantId(UUID restaurantId);
 }

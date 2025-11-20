@@ -1,70 +1,38 @@
-// package com.recetario.restaurant.model;
 package com.recetario.backend.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import java.time.OffsetDateTime;
+import java.util.Map;
+import java.util.UUID;
 
 @Entity
 @Table(name = "restaurants")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Restaurant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "restaurant_id")
+    private UUID restaurantId;
 
     private String name;
+    private String nit;
     private String address;
-    private String contact;
     private String city;
     private String country;
+    private String timezone;
 
-    public Long getId() {
-        return id;
-    }
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private Map<String, Object> metadata;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(name = "created_at")
+    private OffsetDateTime createdAt;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
+    @Column(name = "updated_at")
+    private OffsetDateTime updatedAt;
 }
-
-
-

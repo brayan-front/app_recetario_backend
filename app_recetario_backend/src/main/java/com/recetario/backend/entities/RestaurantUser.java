@@ -2,7 +2,7 @@ package com.recetario.backend.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
@@ -16,19 +16,20 @@ public class RestaurantUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @Column(name = "restaurant_user_id")  
+    private UUID restaurantUserId;
 
-    // Relación con usuario
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // Relación con rol
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
-    // Por ahora dejamos este campo, aunque tu módulo no gestiona restaurantes directamente
     @Column(name = "restaurant_id", nullable = false)
     private UUID restaurantId;
+
+    @Column(name = "joined_at")
+    private OffsetDateTime joinedAt;
 }

@@ -1,9 +1,5 @@
-//package com.example.recetario.controller;
 package com.recetario.backend.controllers;
 
-//import com.example.recetario.model.Recipe;
-//import com.example.recetario.service.RecipeService;
-//import com.example.recetario.dto.RecipeRequest;
 import com.recetario.backend.entities.Recipe;
 import com.recetario.backend.services.RecipeService;
 import com.recetario.backend.dto.RecipeRequest;
@@ -20,6 +16,7 @@ public class RecipeController {
     public RecipeController(RecipeService service){this.service = service;}
 
     @GetMapping
+    
     public List<Recipe> listAll(){ return service.findAll(); }
 
     @GetMapping("/{id}")

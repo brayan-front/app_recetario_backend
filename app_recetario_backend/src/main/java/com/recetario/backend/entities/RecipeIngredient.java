@@ -1,4 +1,3 @@
-// package com.example.recetario.model;
 package com.recetario.backend.entities;
 
 import jakarta.persistence.*;
