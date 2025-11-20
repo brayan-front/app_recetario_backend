@@ -1,23 +1,35 @@
 package com.recetario.backend.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
-import java.util.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.time.OffsetDateTime;
+import java.util.UUID;
+
+@Getter
+@Setter
 @Entity
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Table(name = "recipes")
 public class Recipe {
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
 
-    private String restaurantId;
+    @Id
+    @Column(name = "recipe_id")
+    private UUID recipeId;
+
+    @Column(name = "restaurant_id", nullable = false)
+    private UUID restaurantId;
+
+    @Column(name = "author_id", nullable = false)
+    private UUID authorId;
+
+    @Column(nullable = false)
     private String title;
-    @Column(length = 2000)
+
     private String description;
+
     private Integer servings;
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RecipeIngredient> ingredients = new ArrayList<>();
-
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Preparation> preparations = new ArrayList<>();}
+    @Column(name = "created_at")
+    private OffsetDateTime createdAt;
+}

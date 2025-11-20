@@ -43,13 +43,21 @@ public class UserController {
     // ACTUALIZAR USUARIO
     // =============================
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable UUID id, @RequestBody Map<String, String> request) {
+    public ResponseEntity<?> updateUser(
+        @PathVariable UUID id,
+        @RequestBody Map<String, String> request
+    ) {
         try {
             String fullName = request.get("full_name");
-            User updatedUser = userService.updateUser(id, fullName);
+            String email = request.get("email");
+            String password = request.get("password");
+
+            User updatedUser = userService.updateUser(id, fullName, email, password);
+
             return ResponseEntity.ok(updatedUser);
+
         } catch (RuntimeException e) {
-            return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
+            return ResponseEntity.status(400).body(Map.of("error", e.getMessage()));
         }
     }
 
